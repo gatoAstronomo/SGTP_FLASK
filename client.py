@@ -71,7 +71,7 @@ def imprimir_lista_tareas():
 
 
 def mostrar_filtrar_tareas(key: str, data: str):
-    tarea = get_tareas()
+    tareas = get_tareas()
 
     for tarea in tareas:
         if tarea[key] == data:
@@ -115,10 +115,7 @@ def main():
         opcion = input("Ingrese el número de la opción que desea ejecutar: ")
 
         if opcion == "1":
-            print("\nLista de tareas:")
-            tareas = get_tareas()
-            for tarea in tareas:
-                imprimir_tarea(tarea)
+            imprimir_lista_tareas()
             
 
         elif opcion == "2":
@@ -149,6 +146,7 @@ def main():
 
         elif opcion == "8":
             print("Saliendo del programa...")
+            break;
         
         else:
             print("Opción inválida. Por favor, seleccione una opción válida.")
