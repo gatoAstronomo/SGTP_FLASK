@@ -16,6 +16,11 @@ def get_tareas():
     else:
         print("No fue posible obtener la lista de tareas")
 
+def imprimir_lista_tareas():
+    print("\nLista de tareas:")
+    tareas = get_tareas()
+    for tarea in tareas:
+        imprimir_tarea(tarea)
 
 def imprimir_tarea(tarea):
     print(f'{tarea["nombre"]}: {tarea["hecha"]}: {tarea["descripcion"]}')
@@ -109,8 +114,7 @@ def main():
             print("\nLista de tareas:")
             tareas = get_tareas()
             for tarea in tareas:
-                print(tarea["nombre"])  # Imprime solo el nombre de la tarea
-            print("")
+                imprimir_tarea(tarea)
             
 
         elif opcion == "2":
