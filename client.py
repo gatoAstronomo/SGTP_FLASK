@@ -16,15 +16,6 @@ def get_tareas():
     else:
         print("No fue posible obtener la lista de tareas")
 
-def imprimir_lista_tareas():
-    print("\nLista de tareas:")
-    tareas = get_tareas()
-    for tarea in tareas:
-        imprimir_tarea(tarea)
-
-def imprimir_tarea(tarea):
-    print(f'{tarea["nombre"]}: {tarea["hecha"]}: {tarea["descripcion"]}')
-
 
 def add_tarea(nombre: str, descripcion: str):
     data = {"nombre": nombre, "descripcion": descripcion, "hecha" : "no"}
@@ -64,6 +55,20 @@ def delete_tarea(nombre: str):
 
     elif status == 200:
         print("La tarea fue eliminada")
+
+
+def imprimir_tarea(tarea):
+    print(
+        "%s, hecha: %s, %s" 
+        %(tarea["nombre"], tarea["hecha"], tarea["descripcion"] )
+        )
+
+
+def imprimir_lista_tareas():
+    print("\nLista de tareas:")
+    tareas = get_tareas()
+    for tarea in tareas:
+        imprimir_tarea(tarea)
 
 
 def mostrar_filtrar_tareas(key: str, data: str):
