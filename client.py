@@ -117,7 +117,6 @@ def main():
         if opcion == "1":
             imprimir_lista_tareas()
             
-
         elif opcion == "2":
             add_tarea(
                 input("Ingrese el nombre de la nueva tarea: "), 
