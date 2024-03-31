@@ -1,6 +1,5 @@
 from requests import put, get, post, delete
 
-# IP = "44.197.32.169"
 IP = "127.0.0.1"
 PORT = "8081"
 
