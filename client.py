@@ -3,7 +3,6 @@ from requests import put, get, post, delete
 IP = "127.0.0.1"
 IP = "44.197.32.169"
 PORT = "8081"
-
 URL = f'http://{IP}:{PORT}'
 
 
