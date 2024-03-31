@@ -1,6 +1,8 @@
 from flask import Flask, request, jsonify
 app = Flask(__name__)
 
+PORT = 8081
+
 AR_tareas = []
 
 
@@ -50,5 +52,5 @@ def delete_tarea():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8081, debug=True)
+    app.run(host="0.0.0.0", port=PORT, debug=True)
     
