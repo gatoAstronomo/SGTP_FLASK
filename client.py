@@ -1,14 +1,14 @@
-import requests
+from requests import put, get, post, delete
 
 # IP = "44.197.32.169"
 IP = "127.0.0.1"
 PORT = "8081"
 
-AR_URL = f'http://{IP}:{PORT}'
+URL = f'http://{IP}:{PORT}'
 
 
 def get_tareas():
-    response = requests.get(f'{AR_URL}/tareas')
+    response = get(f'{URL}/tareas')
     status = response.status_code 
 
     if status == 200:
@@ -21,9 +21,9 @@ def imprimir_tarea(tarea):
     print(f'{tarea["nombre"]}: {tarea["hecha"]}: {tarea["descripcion"]}')
 
 
-def add_tarea(AR_tarea, AR_descripcion):
-    data = {"nombre": AR_tarea, "descripcion": AR_descripcion, "hecha" : "no"}
-    response = requests.post(f'{AR_URL}/tareas', json=data)   
+def add_tarea(nombre: str, descripcion: str):
+    data = {"nombre": nombre, "descripcion": descripcion, "hecha" : "no"}
+    response = post(f'{URL}/tareas', json=data)   
     status = response.status_code 
 
     if status == 200:
@@ -33,13 +33,13 @@ def add_tarea(AR_tarea, AR_descripcion):
         print("No fue posible agregar la tarea")
 
 
-def update_tarea(AR_tarea, AR_completada):
+def update_tarea(nombre: str, completada: str):
     data = {
-        "nombre": AR_tarea, 
-        "hecha":AR_completada
+        "nombre": nombre, 
+        "hecha": completada,
         }
 
-    response = requests.put(f'{AR_URL}/tareas', json=data)
+    response = requests.put(f'{URL}/tareas', json=data)
     status = response.status_code
 
     if status == 200:
@@ -49,9 +49,9 @@ def update_tarea(AR_tarea, AR_completada):
         print("Tarea no encontrada")
 
 
-def delete_tarea(AR_tarea):
-    data = {"nombre" : AR_tarea}
-    response = requests.delete(f'{AR_URL}/tareas', json=data)
+def delete_tarea(nombre: str):
+    data = {"nombre" : nombre}
+    response = delete(f'{URL}/tareas', json=data)
     status = response.status_code
     
     if status == 404:
@@ -61,7 +61,7 @@ def delete_tarea(AR_tarea):
         print("La tarea fue eliminada")
 
 
-def mostrar_filtrar_tareas(key, data):
+def mostrar_filtrar_tareas(key: str, data: str):
     tarea = get_tareas()
 
     for tarea in tareas:
@@ -83,9 +83,9 @@ def mostrar_tareas_hechas():
     mostrar_filtrar_tareas("hecha","si")
 
 
-def mostrar_tarea(nombre_tarea):
+def mostrar_tarea(nombre_tarea: str):
     tareas = get_tareas()
-    mostrar_filtrar_tareas("nombre",nombre_tarea)
+    mostrar_filtrar_tareas("nombre", nombre_tarea)
     
 
 def mostrar_menu():
